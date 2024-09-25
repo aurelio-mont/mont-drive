@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 
 import { SERVER_PORT } from '../config';
+import usersRouter from '../routes/users';
 
 export class Server {
     private app: Express;
@@ -22,6 +23,8 @@ export class Server {
         this.app.get('/', (req, res) => {
             res.send('Hello World!');
         }); 
+
+        this.app.use('/users', usersRouter);
     }
     listen() {
         this.app.listen(this.port, () => {
