@@ -21,7 +21,7 @@ export class Server {
     }
     routes () {
         this.app.get('/', (req, res) => {
-            res.send('Hello World!');
+            res.send('Hello World! :)');
         }); 
 
         this.app.use('/users', usersRouter);
