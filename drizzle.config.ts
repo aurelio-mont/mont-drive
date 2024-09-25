@@ -1,4 +1,4 @@
-import { TURSO_CONNECTION_URL, TURSO_AUTH_TOKEN } from './src/config';
+import { ENV } from './src/config/env';
 import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
@@ -7,7 +7,7 @@ export default defineConfig({
   dialect: 'sqlite',
   driver: 'turso',
   dbCredentials: {
-    url: TURSO_CONNECTION_URL,
-    authToken: TURSO_AUTH_TOKEN,
+    url: ENV.TURSO_CONNECTION_URL,
+    authToken: ENV.TURSO_AUTH_TOKEN,
   },
 });

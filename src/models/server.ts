@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 
-import { SERVER_PORT } from '../config';
+import { ENV } from '../config/env';
 import usersRouter from '../routes/users';
 
 export class Server {
@@ -9,7 +9,7 @@ export class Server {
     private port: number;
     constructor() {
         this.app = express();
-        this.port = SERVER_PORT;
+        this.port = ENV.SERVER_PORT;
         
         this.applyMiddleware();
         this.routes();
