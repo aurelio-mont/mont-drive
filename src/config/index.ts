@@ -2,7 +2,7 @@ import { config } from 'dotenv';
 
 config({ path: '.env' });
 
-export const SERVER_PORT = process.env.SERVER_PORT || 3001;
+export const SERVER_PORT: number = parseInt(process.env.SERVER_PORT!, 10) || 3001;
 
 export const TURSO_CONNECTION_URL = process.env.TURSO_CONNECTION_URL || 'https://turso.mont.dev';
 
