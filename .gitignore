@@ -1,0 +1,5 @@
+.vscode
+migrations
+node_modules
+*.db
+.env
