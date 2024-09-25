@@ -4,11 +4,12 @@ import { createUserSchema } from "../../types/user";
 import { db } from "../../db";
 import { eq } from "drizzle-orm";
 import { usersTable } from "../../db/schema";
+import { singToken } from "../../utils/token";
 
 export const loginUserController = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
-    const { success, error } = createUserSchema.safeParse({ email, password });
+    const { success } = createUserSchema.safeParse({ email, password });
 
     if (!success) {
       return res.status(400).json({
@@ -34,12 +35,11 @@ export const loginUserController = async (req: Request, res: Response) => {
       });
     }
 
+    const { userSigned } = singToken(id_user, email);
+
     res.json({
       message: "success",
-      user: {
-        id_user,
-        email,
-      },
+      user: userSigned,
     });
   } catch (error) {
     res.status(500).json({
