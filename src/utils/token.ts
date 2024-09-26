@@ -16,6 +16,6 @@ export const verifyToken = (token: string) => {
 
     return { valid: true, userSigned: { id_user, email, token } };
   } catch (error) {
-    return error;
+    return { valid: false, error: { message: "invalid token" } };
   }
 };

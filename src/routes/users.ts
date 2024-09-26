@@ -2,18 +2,18 @@ import { Router } from "express";
 import { createUserController } from "../controllers/users/createUser";
 import { loginUserController } from "../controllers/users/loginUser";
 import { listUserController } from "../controllers/users/listUser";
+import { validateToken } from "../middlewares/auth/validateToken";
+import { updateUserController } from "../controllers/users/updateUser";
 
 const usersRouter = Router();
 
-usersRouter.get("/", listUserController);
+usersRouter.get("/", [validateToken], listUserController);
 
 usersRouter.post("/", createUserController);
 
 usersRouter.post("/login", loginUserController)
 
-usersRouter.put("/", (req, res) => {
-  res.send({ message: "PUT" });
-});
+usersRouter.put("/:id_user",[validateToken], updateUserController);
 
 usersRouter.delete("/", (req, res) => {
   res.send({ message: "DELETE" });
