@@ -1,12 +1,11 @@
 import { Router } from "express";
 import { createUserController } from "../controllers/users/createUser";
 import { loginUserController } from "../controllers/users/loginUser";
+import { listUserController } from "../controllers/users/listUser";
 
 const usersRouter = Router();
 
-usersRouter.get("/", (req, res) => {
-  res.send({ message: "GET" });
-});
+usersRouter.get("/", listUserController);
 
 usersRouter.post("/", createUserController);
 
