@@ -17,7 +17,7 @@ export const validateRightUser = (req: Request, res: Response, next: NextFunctio
         return res.status(401).json({
             message: "Unauthorized",
             error: {
-                message: "you can not update this user",
+                message: "Not allowed to access this resource",
             },
         });
     }
