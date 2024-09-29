@@ -3,6 +3,7 @@ import cors from 'cors';
 
 import { ENV } from '../config/env';
 import usersRouter from '../routes/users';
+import foldersRouter from '../routes/folders';
 
 export class Server {
     private app: Express;
@@ -25,6 +26,7 @@ export class Server {
         }); 
 
         this.app.use('/users', usersRouter);
+        this.app.use('/folders', foldersRouter);
     }
     listen() {
         this.app.listen(this.port, () => {

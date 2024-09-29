@@ -1,11 +1,13 @@
 import { Router } from "express";
-import { createUserController } from "../controllers/users/createUser";
-import { loginUserController } from "../controllers/users/loginUser";
-import { listUserController } from "../controllers/users/listUser";
+import {
+  listUserController,
+  createUserController,
+  updateUserController,
+  deleteUserController,
+  loginUserController,
+} from "../controllers/users-controller";
 import { validateToken } from "../middlewares/auth/validateToken";
-import { updateUserController } from "../controllers/users/updateUser";
 import { validateRightUser } from "../middlewares/auth/validateRightUser";
-import { deleteUserController } from "../controllers/users/deleteUser";
 
 const usersRouter = Router();
 
